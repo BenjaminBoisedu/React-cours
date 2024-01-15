@@ -1,21 +1,14 @@
-export const myTasks = [
-  {
-    id: 1,
-    name: "Learn React",
-    done: false,
-  },
-  {
-    id: 2,
-    name: "Learn Gsap",
-    done: false,
-  },
-  {
-    id: 3,
-    name: "Learn Vue",
-    done: false,
-  },
-];
+let id = 0;
 
-export function addTask(name) {
-  myTasks.push({ id: myTasks.length + 1, name: name, done: false });
+export function addTask(text, completed = false) {
+  return {
+    id: id++,
+    text,
+    done: completed,
+  };
 }
+export const myTasks = [
+  addTask("Learn React", false),
+  addTask("Learn JSX", true),
+  addTask("Learn Hooks", false),
+];
