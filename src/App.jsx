@@ -5,10 +5,17 @@ import { TodoList } from "./TodoList";
 import "./todolist.css";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("ITEMS");
+    if (savedTodos == null) {
+      return [];
+    }
+    return JSON.parse(savedTodos);
+  });
+
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, []);
+    localStorage.setItem("ITEMS", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos((currentTodos) => {
@@ -42,7 +49,7 @@ function App() {
 
   return (
     <>
-      <NewTodoForm OnSubmit={addTodo} />
+      <NewTodoForm onSubmit={addTodo} />
       <h1>TodoList</h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
