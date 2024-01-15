@@ -15,3 +15,7 @@ export const myTasks = [
     done: false,
   },
 ];
+
+export function addTask(name) {
+  myTasks.push({ id: myTasks.length + 1, name: name, done: false });
+}
