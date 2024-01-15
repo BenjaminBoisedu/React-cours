@@ -7,13 +7,47 @@ li {
     margin-right: 10px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #ffffff;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: max-content;
+    height: 50px;
+    margin-top: 10px;
+    cursor: pointer;
+
+
+}
+
+li:hover {
+    background-color: #f2f2f2;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
+input:checked+label {
+    text-decoration: line-through;
+    color: #808080;
+}
+
 ul {
     list-style-type: none;
     padding: 0px;
+}
+
+ul li button {
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    text-align: center;
+
 }
