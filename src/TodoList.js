@@ -1,38 +1,58 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { myTasks, addTask } from "./Data/data";
+import "./todolist.css";
 
 export default function TodoList() {
   const [todos, setTodos] = useState(myTasks);
+  const [showActive, setShowActive] = useState(false);
+  const [activeTodos, setActiveTodos] = useState([]);
+  const [visibleTodos, setVisibleTodos] = useState([]);
+  const [footer, setFooter] = useState(null);
+  const [check, setCheck] = useState(false);
 
   function handleDoubleClick(name) {
     console.log("Double click detected" + name);
   }
 
-  function submitTask(e) {
-    e.preventDefault();
-  }
+  useEffect(() => {
+    setActiveTodos(todos.filter((todo) => !todo.done));
+  }, [todos]);
+
+  useEffect(() => {
+    setVisibleTodos(showActive ? activeTodos : todos);
+  }, [showActive, todos, activeTodos]);
+
+  useEffect(() => {
+    setFooter(<footer>{activeTodos.length} todos left</footer>);
+  }, [activeTodos]);
 
   return (
     <>
+      <label>
+        <input
+          type="checkbox"
+          checked={showActive}
+          onChange={(e) => setShowActive(e.target.checked)}
+        />
+        Show only active todos
+      </label>
+      <NewTodo onAdd={(newTodo) => setTodos([...todos, newTodo])} />
       <ul>
-        {myTasks.map((task) => (
-          <li key={task.id} onDoubleClick={() => handleDoubleClick(task.text)}>
-            {task.text}
+        {visibleTodos.map((todo) => (
+          <li key={todo.id}>
+            <input type="checkbox" checked={todo.done} />
+            {todo.completed ? <s>{todo.text}</s> : todo.text}
           </li>
         ))}
       </ul>
-      <div>
-        <form onSubmit={(e) => submitTask(e)}>
-          <NewTodo onAdd={(newTask) => setTodos([...todos, newTask])} />
-        </form>
-      </div>
+      {footer}
     </>
   );
 }
 
 function NewTodo({ onAdd }) {
   const [text, setText] = useState("");
+
   function handleAddClick() {
     setText("");
     onAdd(addTask(text));

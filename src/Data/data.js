@@ -9,6 +9,6 @@ export function addTask(text, completed = false) {
 }
 export const myTasks = [
   addTask("Learn React", false),
-  addTask("Learn JSX", true),
+  addTask("Learn JSX", false),
   addTask("Learn Hooks", false),
 ];
