@@ -1,0 +1,28 @@
+li:hover {
+    cursor: pointer;
+}
+
+li {
+    list-style-type: none;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+li input {
+    margin-right: 10px;
+}
+
+li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+li input[type="checkbox"]:checked+label {
+
+    text-decoration: line-through;
+}

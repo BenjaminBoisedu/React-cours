@@ -6,12 +6,12 @@ export const myTasks = [
   },
   {
     id: 2,
-    name: "Learn React",
+    name: "Learn Gsap",
     done: false,
   },
   {
     id: 3,
-    name: "Learn React",
+    name: "Learn Vue",
     done: false,
   },
 ];
