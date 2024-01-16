@@ -1,5 +1,12 @@
 import React from "react";
-export function TodoItem({ completed, id, title, toggleTodo, deleteTodo }) {
+export function TodoItem({
+  completed,
+  id,
+  title,
+  date,
+  toggleTodo,
+  deleteTodo,
+}) {
   return (
     <li className="list__item">
       <label htmlFor="">
