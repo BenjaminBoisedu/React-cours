@@ -48,11 +48,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className="App">
       <NewTodoForm onSubmit={addTodo} />
       <h1>TodoList</h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
-    </>
+    </div>
   );
 }
 
