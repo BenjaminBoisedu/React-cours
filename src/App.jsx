@@ -14,8 +14,19 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("ITEMS", JSON.stringify(todos));
+    localStorage.setItem(
+      "ITEMS",
+      JSON.stringify(todos || []) || JSON.stringify([]) || JSON.stringify(null)
+    );
   }, [todos]);
+
+  useEffect(() => {
+    document.title = `TodoList: ${todos.length} items`;
+  }, [todos]);
+
+  if (!todos) {
+    return <div>Loading...</div>;
+  }
 
   function addTodo(title) {
     setTodos((currentTodos) => {
