@@ -21,8 +21,3 @@ input {
 input[type="checkbox"] {
   margin-right: 10px;
 }
-
-label:checked {
-  text-decoration: line-through;
-  color: #ccc;
-}

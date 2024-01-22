@@ -34,6 +34,25 @@ input:checked+label {
     color: #808080;
 }
 
+label input:checked + span {
+    text-decoration: line-through;
+}
+
+label input:checked {
+    display: none;
+    animation-name: deleteItem;
+    animation-duration: 0.5s;
+}
+
+@keyframes deleteItem {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
 ul {
     list-style-type: none;
     padding: 0px;
@@ -49,5 +68,4 @@ ul li button {
     color: #000000;
     cursor: pointer;
     text-align: center;
-
 }

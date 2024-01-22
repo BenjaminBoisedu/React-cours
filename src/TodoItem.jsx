@@ -8,7 +8,7 @@ export function TodoItem({ completed, id, title, toggleTodo, deleteTodo }) {
           checked={completed}
           onChange={(e) => toggleTodo(id, e.target.checked)}
         />
-        {title}
+        <span>{title}</span>
       </label>
       <button
         onClick={() => {
